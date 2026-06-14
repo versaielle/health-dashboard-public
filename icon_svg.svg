@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#0f0f0f"/>
+
+  <!-- Subtle grid lines -->
+  <line x1="128" y1="0" x2="128" y2="512" stroke="#1a1a1a" stroke-width="1"/>
+  <line x1="256" y1="0" x2="256" y2="512" stroke="#1a1a1a" stroke-width="1"/>
+  <line x1="384" y1="0" x2="384" y2="512" stroke="#1a1a1a" stroke-width="1"/>
+  <line x1="0" y1="128" x2="512" y2="128" stroke="#1a1a1a" stroke-width="1"/>
+  <line x1="0" y1="256" x2="512" y2="256" stroke="#1a1a1a" stroke-width="1"/>
+  <line x1="0" y1="384" x2="512" y2="384" stroke="#1a1a1a" stroke-width="1"/>
+
+  <!-- Green glow circle behind icon -->
+  <circle cx="256" cy="230" r="130" fill="#1D9E75" opacity="0.08"/>
+
+  <!-- Lightning bolt (workout/energy) -->
+  <polygon points="290,110 210,260 252,260 222,400 342,230 296,230" fill="#1D9E75"/>
+
+  <!-- Subtle ring around bolt -->
+  <circle cx="256" cy="255" r="145" fill="none" stroke="#1D9E75" stroke-width="3" opacity="0.2"/>
+
+  <!-- Bottom label -->
+  <text x="256" y="460" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-weight="700" fill="#f0f0f0" letter-spacing="2">STACK</text>
+</svg>

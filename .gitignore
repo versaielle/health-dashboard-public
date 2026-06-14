@@ -1,0 +1,5 @@
+.wrangler/
+node_modules/
+server/.env
+server/data/
+scripts/public-scrub.local

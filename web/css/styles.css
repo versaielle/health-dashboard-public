@@ -1,0 +1,178 @@
+:root {
+  --bg:#0f0f0f; --bg2:#1a1a1a; --bg3:#242424; --border:#2e2e2e;
+  --text:#f0f0f0; --text2:#a0a0a0; --text3:#666;
+  --green:#1D9E75; --blue:#378ADD; --orange:#EF9F27;
+  --red:#D85A30; --purple:#7F77DD; --danger:#E24B4A; --cal:#A78BFA;
+  --safe-top:env(safe-area-inset-top,0px); --safe-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,sans-serif;max-width:480px;margin:0 auto;min-height:100vh;-webkit-overflow-scrolling:touch}
+.topbar{padding:calc(var(--safe-top) + 16px) 16px 12px;background:var(--bg);position:sticky;top:0;z-index:10;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-end}
+.topbar-title{font-size:11px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase}
+.topbar-sub{font-size:18px;font-weight:600;margin-top:2px}
+.hamburger{background:none;border:none;color:var(--text2);cursor:pointer;padding:4px 2px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-bottom:2px}
+.hamburger:active{opacity:.6}
+.settings-overlay{position:fixed;inset:0;background:var(--bg);z-index:20;transform:translateX(100%);transition:transform .25s ease;overflow-y:auto}
+.settings-overlay.open{transform:translateX(0)}
+.settings-header{padding:calc(var(--safe-top) + 16px) 16px 12px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:1}
+.settings-header-title{font-size:18px;font-weight:600}
+.settings-close{background:none;border:none;color:var(--text2);cursor:pointer;padding:4px;font-size:22px;line-height:1;display:flex;align-items:center}
+.settings-close:active{opacity:.6}
+.settings-body{padding:16px;padding-bottom:calc(40px + var(--safe-bottom));max-width:480px;margin:0 auto}
+.content{padding:16px;padding-bottom:calc(80px + var(--safe-bottom))}
+.tabs{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:var(--bg2);border-top:1px solid var(--border);display:flex;padding-bottom:var(--safe-bottom);z-index:10}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 4px 8px;border:none;background:none;color:var(--text3);font-size:10px;cursor:pointer;transition:color .15s}
+.tab.active{color:var(--green)}
+.tab svg{width:22px;height:22px}
+body.grocery-role .tabs .tab:not(#tab-grocery){display:none}
+body.grocery-role .tabs{justify-content:center}
+body.nutritionist-role .tabs .tab:not(#tab-macros){display:none}
+body.nutritionist-role .tabs{justify-content:center}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px}
+.card-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:12px}
+.btn{border:none;border-radius:10px;padding:10px 18px;font-size:14px;font-weight:500;cursor:pointer;transition:opacity .15s}
+.btn:active{opacity:.7}
+.btn-green{background:var(--green);color:#fff}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-gray{background:var(--bg3);color:var(--text2)}
+.btn-red{background:rgba(226,75,74,.15);color:var(--danger)}
+.btn-full{width:100%;padding:14px;font-size:15px}
+.input{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:14px;color:var(--text);width:100%;outline:none}
+.input:focus{border-color:var(--blue)}
+.macro-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.macro-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:10px 6px;text-align:center}
+.macro-val{font-size:20px;font-weight:600}
+.macro-lbl{font-size:10px;color:var(--text3);margin-top:2px}
+.bar-wrap{margin-bottom:10px}
+.bar-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}
+.bar-track{height:6px;background:var(--bg3);border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;transition:width .4s}
+.tl-row{display:grid;grid-template-columns:72px 14px 1fr;gap:0 10px}
+.tl-time{font-size:11px;color:var(--text3);text-align:right;padding-top:2px;font-variant-numeric:tabular-nums}
+.tl-dot{width:10px;height:10px;border-radius:50%;margin-top:3px;flex-shrink:0}
+.tl-line{width:2px;background:var(--border);flex:1;min-height:14px;margin:0 auto}
+.tl-label{font-size:13px;font-weight:500}
+.tl-sub{font-size:11px;color:var(--text2);margin-top:1px;padding-bottom:12px}
+.tl-cal{font-size:11px;color:var(--text2);margin-top:1px;padding-bottom:12px;font-style:italic}
+.pill{display:inline-block;font-size:11px;padding:2px 10px;border-radius:20px}
+.grocery-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.grocery-item:last-child{border-bottom:none}
+.check-box{width:20px;height:20px;border-radius:5px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
+.status-dot{width:8px;height:8px;border-radius:50%}
+.push-result{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border)}
+.push-result:last-child{border-bottom:none}
+.meeting-btn{border:2px solid var(--border);background:var(--bg3);color:var(--text2);border-radius:10px;padding:8px 14px;font-size:13px;cursor:pointer;transition:all .15s}
+.meeting-btn.active{border-color:var(--blue);background:rgba(55,138,221,.15);color:var(--blue);font-weight:600}
+.conflict-banner{background:rgba(239,159,39,.1);border:1px solid rgba(239,159,39,.3);border-radius:10px;padding:10px 12px;margin-bottom:8px;font-size:12px;color:var(--orange);line-height:1.5}
+.url-row{display:flex;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)}
+.url-row:last-child{border-bottom:none}
+.theme-swatch{display:flex;flex-direction:column;align-items:center;gap:6px;border-radius:10px;padding:10px 4px;cursor:pointer;border:2px solid transparent;transition:border-color .15s}
+.theme-swatch.active{border-color:var(--green)}
+.theme-swatch span{font-size:10px;color:var(--text2)}
+#login-screen{position:fixed;inset:0;background:var(--bg);z-index:100;display:flex;align-items:center;justify-content:center;padding:24px}
+.login-card{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:40px 28px;text-align:center;max-width:320px;width:100%}
+.login-logo{font-size:32px;margin-bottom:8px}
+.login-title{font-size:20px;font-weight:700;margin-bottom:4px}
+.login-sub{font-size:13px;color:var(--text3);margin-bottom:32px}
+.login-error{font-size:13px;color:var(--danger);margin-top:16px;min-height:20px}
+
+/* ── Pull-to-Refresh ── */
+#ptr{height:0;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--bg)}
+#ptr-inner{display:flex;align-items:center;gap:8px;color:var(--text3);font-size:13px;font-weight:500}
+#ptr-arrow{transition:transform .25s ease;flex-shrink:0}
+#ptr-spin{display:none;flex-shrink:0}
+#ptr[data-state='ready'] #ptr-arrow{transform:rotate(180deg)}
+#ptr[data-state='refreshing'] #ptr-arrow{display:none}
+#ptr[data-state='refreshing'] #ptr-spin{display:block}
+#ptr[data-state='refreshing'] #ptr-text{color:var(--green)}
+@keyframes ptr-rotate{to{transform:rotate(360deg)}}
+#ptr-spin{animation:ptr-rotate .7s linear infinite}
+/* ── Bottom Drawers (weekly plan / grocery cart + water log) ── */
+.weekly-drawer,.water-drawer{
+  position:fixed;
+  bottom:calc(56px + var(--safe-bottom));
+  left:50%;
+  width:100%;
+  max-width:480px;
+  height:70vh;
+  z-index:9;
+  display:flex;
+  flex-direction:column;
+  background:var(--bg2);
+  border-top:1px solid var(--border);
+  border-left:1px solid var(--border);
+  border-right:1px solid var(--border);
+  border-radius:14px 14px 0 0;
+  /* Start fully hidden below viewport */
+  transform:translateX(-50%) translateY(100%);
+  transition:transform .32s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 -4px 24px rgba(0,0,0,.25);
+}
+/* Summary bar visible, body hidden below */
+.weekly-drawer.has-recipes{
+  transform:translateX(-50%) translateY(calc(100% - 48px));
+}
+/* Fully expanded */
+.weekly-drawer.has-recipes.open{
+  transform:translateX(-50%) translateY(0);
+}
+/* Water drawer: same peek/expand behavior, gated on its own state class */
+.water-drawer.has-water{
+  transform:translateX(-50%) translateY(calc(100% - 48px));
+}
+.water-drawer.has-water.open{
+  transform:translateX(-50%) translateY(0);
+}
+.water-drawer.open .weekly-drawer-chevron{transform:rotate(180deg)}
+.weekly-drawer-handle{
+  height:48px;
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 16px;
+  cursor:pointer;
+  flex-shrink:0;
+  border-bottom:1px solid var(--border);
+  user-select:none;
+  -webkit-user-select:none;
+}
+.weekly-drawer-handle:active{opacity:.8}
+.weekly-drawer-chevron{
+  transition:transform .32s cubic-bezier(.4,0,.2,1);
+  flex-shrink:0;
+}
+.weekly-drawer.open .weekly-drawer-chevron{transform:rotate(180deg)}
+.weekly-drawer-body{
+  flex:1;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  padding:12px 16px calc(4px + var(--safe-bottom,0px));
+}
+/* Push content up when summary bar is showing */
+.content.drawer-peek{padding-bottom:calc(96px + var(--safe-bottom,0px)) !important}
+@keyframes spin{to{transform:rotate(360deg)}}
+.input{background:var(--bg3);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:10px 12px;font-size:14px;font-family:inherit;outline:none;width:100%}
+
+/* ── Native time input (renderTimePicker) — iOS system wheel / desktop segmented field ── */
+input[type="time"].time-input{
+  background:var(--bg3);border:1px solid var(--border);border-radius:6px;
+  color:var(--text2);font-size:12px;font-family:inherit;padding:3px 8px;
+  line-height:1.4;min-height:26px;min-width:0;
+  -webkit-appearance:none;appearance:none;
+}
+input[type="time"].time-input:focus{outline:none;border-color:var(--blue);color:var(--text)}
+/* Hide the desktop clock icon — segments + arrow keys/typing are the sleek path */
+input[type="time"].time-input::-webkit-calendar-picker-indicator{display:none}
+input[type="time"].time-input::-webkit-datetime-edit{padding:0}
+input[type="time"].time-input::-webkit-datetime-edit-ampm-field:focus,
+input[type="time"].time-input::-webkit-datetime-edit-hour-field:focus,
+input[type="time"].time-input::-webkit-datetime-edit-minute-field:focus{
+  background:rgba(55,138,221,.25);border-radius:3px;color:var(--text)
+}
+/* iOS renders the value centered in a button-like control; keep it compact */
+@supports (-webkit-touch-callout: none){
+  input[type="time"].time-input{padding:4px 8px}
+}
+.time-clear{background:none;border:none;color:var(--text3);font-size:13px;cursor:pointer;padding:0 4px;line-height:1}
+.time-clear:active{opacity:.6}

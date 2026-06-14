@@ -1,0 +1,10 @@
+{
+  "name": "health-dashboard",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "deploy:dev":    "bash scripts/deploy-dev.sh",
+    "deploy:prod":   "bash scripts/deploy-prod.sh",
+    "deploy:public": "bash scripts/sync-public.sh"
+  }
+}
